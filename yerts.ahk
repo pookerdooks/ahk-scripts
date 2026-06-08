@@ -1,10 +1,15 @@
-﻿;F11 = Hold Left Click  
-;Numpad 8 = Hold 'R'
-;Numpad 9 = Random Double-Click Spam
-;Pause/Break = Toggle Script On/Off   tray icon will go from green(running) to red(paused)
 
 
+#NoEnv
+#SingleInstance Force
 #MaxThreadsPerHotkey, 2
+
+if !A_IsAdmin
+{
+    Run *RunAs "%A_ScriptFullPath%"
+    ExitApp
+}
+
 LeftClickHold := 0
 DoubleClickSpam := 0
 RHold := 0
@@ -74,6 +79,6 @@ SpamRandomDouble:
 Return
 
 Pause::
-    Pause, Toggle
-    TrayTip, Script Paused, Press Pause again to resume.
+    Suspend, Toggle
+	Pause, Toggle
 Return
